@@ -3,24 +3,26 @@ const delay = function (ms) {
 }
 
 const promises = [
-	delay(50).then(() => 42),
-	delay(75).then(() => { throw 'nope' })
+	delay(1000).then(() => 42),
+	delay(1500).then(() => { throw 'nope' })
 ]
-
-// console.log(promises);
 
 async function getResult(promises) {
 	let result = [];
 
-	promises.forEach((item) => {
-		item.then((value) => result.push({
+	for (const item of promises) {
+		await item
+			.then((value) => result.push({
 				status: 'resolved',
 				value: value
-			}
-		))
-	})
+			}))
+			.catch((err) => result.push({
+				status: 'rejected',
+				reason: err
+			}));
+	}
 
 	return result;
 }
 
-console.log(getResult(promises));
+getResult(promises).then(console.log) // [{ status: "resolved", value: 42 }, { status: "rejected", reason: "nope" }]

@@ -25,4 +25,4 @@ async function getResult(promises) {
 	return result;
 }
 
-getResult(promises).then(console.log) // [{ status: "resolved", value: 42 }, { status: "rejected", reason: "nope" }]
+module.exports =  { getResult , promises}

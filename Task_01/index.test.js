@@ -1,6 +1,6 @@
 const { setCallsYes } = require('./index.js');
 describe( 'Тестирвоание функции setCallsYes', () => {
-	test('положительное целое чило', () => {
+	test('Положительное целое чило', () => {
 		const callYes = setCallsYes(2)
 
 		expect(callYes()).toBe('Yes')
@@ -9,7 +9,7 @@ describe( 'Тестирвоание функции setCallsYes', () => {
 		expect(callYes()).toBe('No')
 	})
 
-	test('отрицательное число', () => {
+	test('Отрицательное число', () => {
 		const callYes = setCallsYes(-2)
 
 		expect(callYes()).toBe('No')
@@ -22,6 +22,15 @@ describe( 'Тестирвоание функции setCallsYes', () => {
 		const callYes = setCallsYes(NaN)
 
 		expect(callYes()).toBe('No')
+		expect(callYes()).toBe('No')
+		expect(callYes()).toBe('No')
+		expect(callYes()).toBe('No')
+	})
+
+	test('Дробное число', () => {
+		const callYes = setCallsYes(0.25)
+
+		expect(callYes()).toBe('Yes')
 		expect(callYes()).toBe('No')
 		expect(callYes()).toBe('No')
 		expect(callYes()).toBe('No')

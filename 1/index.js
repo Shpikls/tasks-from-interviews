@@ -4,16 +4,11 @@ function setCallsYes(n) {
 	return function () {
 		if (calls > 0) {
 			calls--;
-			return 'yes';
+			return 'Yes';
 		} else {
-			return 'no'
+			return 'No'
 		}
 	}
 }
 
-const getYes = setCallsYes(2);
-
-console.log(getYes());
-console.log(getYes());
-console.log(getYes());
-console.log(getYes());
+module.exports = { setCallsYes }
